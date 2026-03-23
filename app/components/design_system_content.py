@@ -245,29 +245,29 @@ def content() -> None:
     with ui.element('div').classes('card mb-4'):
         with ui.tabs().classes('tabs-bar') as tabs:
             tab_overview  = ui.tab('Overview',  icon='dashboard')
-            tab_analytics = ui.tab('Analytics', icon='bar_chart')
+            tab_holdings  = ui.tab('Holdings',  icon='account_balance')
             tab_settings  = ui.tab('Settings',  icon='settings')
         with ui.tab_panels(tabs, value=tab_overview).classes('w-full mt-3'):
             with ui.tab_panel(tab_overview):
-                ui.label('Overview panel content — dashboard widgets would live here.').classes('text-sm text-muted')
-            with ui.tab_panel(tab_analytics):
-                ui.label('Analytics panel — charts and KPIs go here.').classes('text-sm text-muted')
+                ui.label('Overview panel content — portfolio KPIs and charts would live here.').classes('text-sm text-muted')
+            with ui.tab_panel(tab_holdings):
+                ui.label('Holdings panel — stock positions and performance data go here.').classes('text-sm text-muted')
             with ui.tab_panel(tab_settings):
-                ui.label('Settings panel — configuration options here.').classes('text-sm text-muted')
+                ui.label('Settings panel — notification and alert configuration options here.').classes('text-sm text-muted')
 
-    # ── 16. DATA TABLE ───────────────────────────────────────────
+    # ── 16 · DATA TABLE ───────────────────────────────────────────
     ui.label('16 · Data Table').classes('section-title mt-4 mb-2')
     with ui.element('div').classes('card mb-4'):
         rows = [
-            {'id': 'ORD-001', 'customer': 'Acme Corp',    'status': 'success', 'label': 'Shipped',    'amount': '€ 1,240.00'},
-            {'id': 'ORD-002', 'customer': 'Beta GmbH',    'status': 'warning', 'label': 'Pending',    'amount': '€   380.50'},
-            {'id': 'ORD-003', 'customer': 'Gamma Ltd',    'status': 'danger',  'label': 'Cancelled',  'amount': '€   720.00'},
-            {'id': 'ORD-004', 'customer': 'Delta AG',     'status': 'info',    'label': 'Processing', 'amount': '€ 2,100.00'},
+            {'id': 'POS-001', 'ticker': 'AAPL',  'status': 'success', 'label': 'Gain',   'value': '$ 28,500'},
+            {'id': 'POS-002', 'ticker': 'MSFT',  'status': 'success', 'label': 'Gain',   'value': '$ 32,000'},
+            {'id': 'POS-003', 'ticker': 'GOOGL', 'status': 'danger',  'label': 'Loss',   'value': '$ 14,500'},
+            {'id': 'POS-004', 'ticker': 'NVDA',  'status': 'info',    'label': 'Hold',   'value': '$ 18,000'},
         ]
         with ui.element('table').classes('data-table w-full'):
             with ui.element('thead'):
                 with ui.element('tr'):
-                    for col in ['Order ID', 'Customer', 'Status', 'Amount']:
+                    for col in ['Position ID', 'Ticker', 'Status', 'Value']:
                         with ui.element('th'):
                             ui.label(col)
             with ui.element('tbody'):
@@ -276,11 +276,11 @@ def content() -> None:
                         with ui.element('td'):
                             ui.label(row['id'])
                         with ui.element('td'):
-                            ui.label(row['customer'])
+                            ui.label(row['ticker'])
                         with ui.element('td'):
                             ui.label(row['label']).classes(f'badge badge-{row["status"]}')
                         with ui.element('td'):
-                            ui.label(row['amount'])
+                            ui.label(row['value'])
 
     # ── 17. TEXTAREA ─────────────────────────────────────────────
     ui.label('17 · Textarea').classes('section-title mt-4 mb-2')
@@ -397,11 +397,11 @@ def content() -> None:
                 ui.icon('check_circle').style('font-size:14px;margin-right:4px')
                 ui.label('Active')
             with ui.element('span').classes('chip chip-danger'):
-                ui.icon('cancel').style('font-size:14px;margin-right:4px')
-                ui.label('Rejected')
+                ui.icon('trending_down').style('font-size:14px;margin-right:4px')
+                ui.label('Sell Signal')
             with ui.element('span').classes('chip chip-success'):
-                ui.icon('local_shipping').style('font-size:14px;margin-right:4px')
-                ui.label('Shipped')
+                ui.icon('trending_up').style('font-size:14px;margin-right:4px')
+                ui.label('Buy Signal')
 
     # ── 26. SKELETON ─────────────────────────────────────────────
     ui.label('26 · Skeleton / Loading').classes('section-title mt-4 mb-2')
@@ -446,23 +446,23 @@ def content() -> None:
     ui.label('29 · Timeline').classes('section-title mt-4 mb-2')
     with ui.element('div').classes('card mb-4'):
         with ui.timeline(side='right'):
-            ui.timeline_entry('Order placed by customer via web portal.',
-                              title='Order Created', subtitle='Feb 26, 09:12', icon='shopping_cart', color='primary')
-            ui.timeline_entry('Payment confirmed. Transaction ID: TXN-884421.',
-                              title='Payment Confirmed', subtitle='Feb 26, 09:15', icon='credit_card', color='positive')
-            ui.timeline_entry('Item picked and packed in warehouse B.',
-                              title='Packed', subtitle='Feb 26, 11:40', icon='inventory_2', color='info')
-            ui.timeline_entry('Handed to carrier. Tracking: DHL-99281744.',
-                              title='Shipped', subtitle='Feb 26, 14:05', icon='local_shipping', color='warning')
-            ui.timeline_entry('Awaiting delivery to customer address.',
-                              title='In Transit', subtitle='Pending', icon='pending', color='negative')
+            ui.timeline_entry('Buy order placed for 100 shares AAPL.',
+                              title='Order Created', subtitle='Mar 15, 09:12', icon='shopping_cart', color='primary')
+            ui.timeline_entry('Order filled at $190.50 per share.',
+                              title='Order Filled', subtitle='Mar 15, 09:15', icon='check_circle', color='positive')
+            ui.timeline_entry('Price alert triggered: AAPL above $195.',
+                              title='Alert Triggered', subtitle='Mar 18, 11:40', icon='notifications', color='info')
+            ui.timeline_entry('Stop-loss order set at $180.00.',
+                              title='Stop Loss Set', subtitle='Mar 18, 14:05', icon='shield', color='warning')
+            ui.timeline_entry('Position closed with +4.2% return.',
+                              title='Position Closed', subtitle='Mar 20, 16:00', icon='trending_up', color='positive')
 
     # ── 30. BREADCRUMBS & PAGINATION ─────────────────────────────
     ui.label('30 · Breadcrumbs & Pagination').classes('section-title mt-4 mb-2')
     with ui.element('div').classes('card mb-4'):
         ui.label('BREADCRUMBS').classes('label-text mb-3')
         with ui.row().classes('items-center gap-1 breadcrumb mb-4'):
-            for i, (label, icon) in enumerate([('Home', 'home'), ('Orders', 'receipt_long'), ('ORD-001', 'article')]):
+            for i, (label, icon) in enumerate([('Home', 'home'), ('Portfolio', 'account_balance'), ('AAPL', 'show_chart')]):
                 with ui.row().classes('items-center gap-1'):
                     ui.icon(icon).classes('breadcrumb-icon')
                     ui.label(label).classes('breadcrumb-el' + (' breadcrumb-active' if i == 2 else ''))

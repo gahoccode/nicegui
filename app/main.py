@@ -65,16 +65,14 @@ def root():
     ui.sub_pages({
     '/': index,
     '/design-system': design_system,
-    '/shipping': shipping,
-    '/production': production,
-    '/production/{searchFilter}' : production_search,
-    '/orders' : orders,
-    '/pallets' : pallets,
-    '/packing' : packing,
+    '/watchlist': watchlist,
+    '/screener': screener,
+    '/portfolio' : portfolio,
+    '/alerts' : alerts,
+    '/backtest' : backtest,
     '/icons'      : icons,
     '/print-demo' : print_demo,
     '/settings'   : settings,
-    '/customer/{kundennummer}': customer_page,
     })
 
 
@@ -86,19 +84,19 @@ def index():
 def design_system():
     components.design_system_content.content()
 
-def shipping():
+def watchlist():
     components.shipping_content.content()
 
-def production():
-    components.production_content.content(searchFilter='')
+def screener():
+    components.production_content.content()
 
-def orders():
+def portfolio():
     components.orders_content.content()
 
-def pallets():
+def alerts():
     components.pallets_content.content()
 
-def packing():
+def backtest():
     components.packings_content.content()
 
 def icons():
@@ -109,12 +107,6 @@ def print_demo():
 
 def settings():
     components.settings_content.content()
-
-def production_search(searchFilter):
-    components.production_content.content(searchFilter=searchFilter)
-
-def customer_page(kundennummer):
-    components.data_content.content(kundennummer)
 
 
 # Standalone print route — no sidebar, no header, no layout wrapper

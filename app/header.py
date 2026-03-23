@@ -64,40 +64,40 @@ def frame(title: str, version: str, get_logo_func=None):
                 sidebar_labels.append(dashboard_label)
         nav_links.append({'link': dashboard_link, 'icon': dashboard_icon, 'patterns': ['/'], 'exact': True})
 
-        with ui.link('', '/shipping').classes('w-full no-underline text-black').style('border-radius: 2rem;') as shipping_link:
+        with ui.link('', '/watchlist').classes('w-full no-underline text-black').style('border-radius: 2rem;') as watchlist_link:
             with ui.row().classes('items-center mb-2 mt-2 cursor-pointer w-full no-wrap'):
-                shipping_icon = ui.icon('local_shipping').classes('ml-5 text-2xl flex-shrink-0')
-                shipping_label = ui.label('Shipping').classes('text-lg sidebar-label ml-3 flex-shrink-0')
-                sidebar_labels.append(shipping_label)
-        nav_links.append({'link': shipping_link, 'icon': shipping_icon, 'patterns': ['/shipping', '/customer'], 'exact': False})
+                watchlist_icon = ui.icon('trending_up').classes('ml-5 text-2xl flex-shrink-0')
+                watchlist_label = ui.label('Watchlist').classes('text-lg sidebar-label ml-3 flex-shrink-0')
+                sidebar_labels.append(watchlist_label)
+        nav_links.append({'link': watchlist_link, 'icon': watchlist_icon, 'patterns': ['/watchlist'], 'exact': False})
 
-        with ui.link('', '/production').classes('w-full no-underline text-black').style('border-radius: 2rem;') as production_link:
+        with ui.link('', '/screener').classes('w-full no-underline text-black').style('border-radius: 2rem;') as screener_link:
             with ui.row().classes('items-center mb-2 mt-2 cursor-pointer w-full no-wrap'):
-                production_icon = ui.icon('precision_manufacturing').classes('ml-5 text-2xl flex-shrink-0')
-                production_label = ui.label('Production').classes('text-lg sidebar-label ml-3 flex-shrink-0')
-                sidebar_labels.append(production_label)
-        nav_links.append({'link': production_link, 'icon': production_icon, 'patterns': ['/production'], 'exact': False})
+                screener_icon = ui.icon('query_stats').classes('ml-5 text-2xl flex-shrink-0')
+                screener_label = ui.label('Screener').classes('text-lg sidebar-label ml-3 flex-shrink-0')
+                sidebar_labels.append(screener_label)
+        nav_links.append({'link': screener_link, 'icon': screener_icon, 'patterns': ['/screener'], 'exact': False})
 
-        with ui.link('', '/orders').classes('w-full no-underline text-black').style('border-radius: 2rem;') as orders_link:
+        with ui.link('', '/portfolio').classes('w-full no-underline text-black').style('border-radius: 2rem;') as portfolio_link:
             with ui.row().classes('items-center mb-2 mt-2 cursor-pointer w-full no-wrap'):
-                orders_icon = ui.icon('fact_check').classes('ml-5 text-2xl flex-shrink-0')
-                orders_label = ui.label('Orders').classes('text-lg sidebar-label ml-3 flex-shrink-0')
-                sidebar_labels.append(orders_label)
-        nav_links.append({'link': orders_link, 'icon': orders_icon, 'patterns': ['/orders'], 'exact': False})
+                portfolio_icon = ui.icon('account_balance').classes('ml-5 text-2xl flex-shrink-0')
+                portfolio_label = ui.label('Portfolio').classes('text-lg sidebar-label ml-3 flex-shrink-0')
+                sidebar_labels.append(portfolio_label)
+        nav_links.append({'link': portfolio_link, 'icon': portfolio_icon, 'patterns': ['/portfolio'], 'exact': False})
 
-        with ui.link('', '/pallets').classes('w-full no-underline text-black').style('border-radius: 2rem;') as pallets_link:
+        with ui.link('', '/alerts').classes('w-full no-underline text-black').style('border-radius: 2rem;') as alerts_link:
             with ui.row().classes('items-center mb-2 mt-2 cursor-pointer w-full no-wrap'):
-                pallets_icon = ui.icon('pallet').classes('ml-5 text-2xl flex-shrink-0')
-                pallets_label = ui.label('Pallets').classes('text-lg sidebar-label ml-3 flex-shrink-0')
-                sidebar_labels.append(pallets_label)
-        nav_links.append({'link': pallets_link, 'icon': pallets_icon, 'patterns': ['/pallets'], 'exact': False})
+                alerts_icon = ui.icon('notifications').classes('ml-5 text-2xl flex-shrink-0')
+                alerts_label = ui.label('Alerts').classes('text-lg sidebar-label ml-3 flex-shrink-0')
+                sidebar_labels.append(alerts_label)
+        nav_links.append({'link': alerts_link, 'icon': alerts_icon, 'patterns': ['/alerts'], 'exact': False})
 
-        with ui.link('', '/packing').classes('w-full no-underline text-black').style('border-radius: 2rem;') as packing_link:
+        with ui.link('', '/backtest').classes('w-full no-underline text-black').style('border-radius: 2rem;') as backtest_link:
             with ui.row().classes('items-center mb-2 mt-2 cursor-pointer w-full no-wrap'):
-                packing_icon = ui.icon('inventory_2').classes('ml-5 text-2xl flex-shrink-0')
-                packing_label = ui.label('Packing').classes('text-lg sidebar-label ml-3 flex-shrink-0')
-                sidebar_labels.append(packing_label)
-        nav_links.append({'link': packing_link, 'icon': packing_icon, 'patterns': ['/packing'], 'exact': False})
+                backtest_icon = ui.icon('science').classes('ml-5 text-2xl flex-shrink-0')
+                backtest_label = ui.label('Backtest').classes('text-lg sidebar-label ml-3 flex-shrink-0')
+                sidebar_labels.append(backtest_label)
+        nav_links.append({'link': backtest_link, 'icon': backtest_icon, 'patterns': ['/backtest'], 'exact': False})
 
         with ui.link('', '/print-demo').classes('w-full no-underline text-black').style('border-radius: 2rem;') as print_demo_link:
             with ui.row().classes('items-center mb-2 mt-2 cursor-pointer w-full no-wrap'):
